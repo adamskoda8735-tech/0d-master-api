@@ -1,3 +1,5 @@
+use pragma_telemetry::metrics;
+
 mod cli;
 
 use crate::cli::AuthCli;
