@@ -11,6 +11,7 @@ rust-version.workspace = true
 exclude.workspace = true
 
 [dependencies]
+pragma-telemetry = { version = "0.1.0", registry = "pragma" }
 pragma-common.workspace = true
 zerod_db.workspace = true
 zerod_api.workspace = true
