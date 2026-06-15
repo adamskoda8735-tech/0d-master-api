@@ -220,3 +220,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Diesel](https://diesel.rs/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Utoipa](https://github.com/juhaku/utoipa)
+<!-- trigger -->
