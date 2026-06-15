@@ -1,16 +1,20 @@
 name: Pragma
 
-on: [pull_request]
+on: [pull_request, push, workflow_dispatch]
 
 jobs:
-  workflow:
-    permissions:
-      # required for all workflows
-      security-events: write
-      checks: write
-      pull-requests: write
-      # only required for workflows in private repositories
-      actions: read
-      contents: read
-    uses: astraly-labs/workflows/.github/workflows/rust-minimal.yaml@main
-    secrets: inherit
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Setup cargo registry
+        run: |
+          mkdir -p ~/.cargo
+          cat >> ~/.cargo/config.toml << 'EOF'
+          [registries.pragma]
+          index = "sparse+https://registry.production.pragma.build/api/v1/crates/"
+          EOF
+      - name: Build
+        run: cargo build --release
